@@ -29,6 +29,6 @@ function getFractionReductionSteps(string $input): string{
 }
 
 
-$input = '12/16';
+// $input = '12/16';
 
-echo getFractionReductionSteps($input).PHP_EOL;
+// echo getFractionReductionSteps($input).PHP_EOL;
