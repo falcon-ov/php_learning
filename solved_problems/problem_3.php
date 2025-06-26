@@ -48,6 +48,6 @@ function calculateFractionExpression($input)
     }
 }
 
-$input = '2/3 - 3/4';
+$input = '2/3 / 3/4';
 
 echo getFractionReductionSteps(calculateFractionExpression($input)) . PHP_EOL;
