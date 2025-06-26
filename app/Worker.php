@@ -2,7 +2,8 @@
 
 namespace App;
 
-class Worker{
+abstract class Worker implements WorkerInterface
+{
     public function getName(): string
     {
         return $this->name;
@@ -72,9 +73,4 @@ class Worker{
         $this->age = $age;
         $this->hours = $hours;
     }
-
-    public function work(){
-        print_r("Im woriking!");
-    }
-
 }
