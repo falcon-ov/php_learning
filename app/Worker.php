@@ -4,6 +4,26 @@ namespace App;
 
 abstract class Worker implements WorkerInterface
 {
+    private string $name;
+    private int $age;
+    private array $hours;
+
+    private string $position;
+
+    private int $experience;
+
+    /**
+     * @param string $name
+     * @param int $age
+     * @param array $hours
+     */
+    public function __construct(string $name, int $age, array $hours)
+    {
+        $this->name = $name;
+        $this->age = $age;
+        $this->hours = $hours;
+    }
+
     public function getName(): string
     {
         return $this->name;
@@ -54,23 +74,5 @@ abstract class Worker implements WorkerInterface
         $this->experience = $experience;
     }
 
-    private string $name;
-    private int $age;
-    private array $hours;
 
-    private string $position;
-
-    private int $experience;
-
-    /**
-     * @param string $name
-     * @param int $age
-     * @param array $hours
-     */
-    public function __construct(string $name, int $age, array $hours)
-    {
-        $this->name = $name;
-        $this->age = $age;
-        $this->hours = $hours;
-    }
 }
