@@ -8,7 +8,9 @@ use App\Salary;
 
 $developer = new Developer('Ivan', 20, [1, 2, 3], 'dev');
 
-$salary = Salary::count($developer->getHours());
-echo $salary;
+print($developer);
+
+$developer->asdasd();
+$developer->asdasd;
 
 echo PHP_EOL;
