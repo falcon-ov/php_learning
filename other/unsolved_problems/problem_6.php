@@ -26,7 +26,7 @@ class Student
         $debtsCourseName = [];
         foreach ($this->courses as $cours){
             foreach ($scoresInfo as $scoreInfo){
-                if($cours[1] < $scoreInfo[1] && $cours[0] == $scoreInfo[0]){
+                if($cours[1] <= $scoreInfo[1] && $cours[0] == $scoreInfo[0]){
                     $debtsCourseName[] = $cours[0];
                 }
             }
@@ -85,18 +85,41 @@ class CourseManager
             }
         }
     }
+    public function courseWithoutStudentDebts(bool $getArray = false)
+    {
+        $debtsCourses = $this->courseWithStudentDebts(true);
+        $allCourses = [];
 
-    public function courseWithStudentDebts()
+        foreach ($this->scoresInfo as $scoreInfo) {
+            $allCourses[] = $scoreInfo[0];
+        }
+        $resultCourses = array_diff($allCourses, $debtsCourses);
+        if($getArray){
+            return $resultCourses;
+        }
+        $result = '';
+        foreach ($resultCourses as $line){
+            $result .= $line.PHP_EOL;
+        }
+        return $result;
+    }
+    public function courseWithStudentDebts(bool $getArray = false)
     {
         $courseWithStudentDebts = [];
         foreach ($this->students as $student){
             $courseWithStudentDebts = array_merge($courseWithStudentDebts, $student->hasDebts($this->scoresInfo));
         }
         if(empty($courseWithStudentDebts)){
+            if($getArray){
+                return [];
+            }
             return "Пусто";
         }else{
             $array_unique = array_unique($courseWithStudentDebts);
             sort($array_unique);
+            if($getArray){
+                return $array_unique;
+            }
             $result = '';
             foreach ($array_unique as $line){
                 $result .= $line.PHP_EOL;
@@ -110,7 +133,13 @@ class CourseManager
 $studentsInfo = "Анна,Математика,85;Анна,Химия,90;Борис,Математика,75;Борис,История,80;Евгений,Математика,95;Евгений,История,85";
 $scoresInfo = "Математика,80;Химия,60;История,80";
 
+//$studentsInfo = "Анна,Психология,8;Анна,Литература,9;Борис,Обществознание,8";
+//$scoresInfo = "Психология,8;Литература,9;Обществознание,8";
+
 $CourseManager = new CourseManager($scoresInfo);
 $CourseManager->addStudentsInfo($studentsInfo);
-echo $CourseManager->courseWithStudentDebts();
+echo "Название курсов, где есть хотя бы одна академическая задолженность:".PHP_EOL;
+echo $CourseManager->courseWithStudentDebts().PHP_EOL;
+echo "Название курсов, где нет ни одной академической задолженности:".PHP_EOL;
+echo $CourseManager->courseWithoutStudentDebts().PHP_EOL;
 // ваш код
