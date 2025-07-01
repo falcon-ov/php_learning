@@ -27,13 +27,10 @@ class Student
         foreach ($this->courses as $cours){
             foreach ($scoresInfo as $scoreInfo){
                 if($cours[1] < $scoreInfo[1] && $cours[0] == $scoreInfo[0]){
-                    print($this->name);
-                    print($cours[1]."<".$scoreInfo[1]."&&".$cours[0]."==".$scoreInfo[0]);
                     $debtsCourseName[] = $cours[0];
                 }
             }
         }
-        print_r($debtsCourseName);
         return $debtsCourseName;
     }
 }
@@ -93,7 +90,7 @@ class CourseManager
     {
         $courseWithStudentDebts = [];
         foreach ($this->students as $student){
-            array_merge($courseWithStudentDebts, $student->hasDebts($this->scoresInfo));
+            $courseWithStudentDebts = array_merge($courseWithStudentDebts, $student->hasDebts($this->scoresInfo));
         }
         if(empty($courseWithStudentDebts)){
             return "Пусто";
