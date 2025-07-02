@@ -139,7 +139,7 @@ $scoresInfo = "Математика,80;Химия,60;История,80";
 $CourseManager = new CourseManager($scoresInfo);
 $CourseManager->addStudentsInfo($studentsInfo);
 echo "Название курсов, где есть хотя бы одна академическая задолженность:".PHP_EOL;
-echo $CourseManager->courseWithStudentDebts().PHP_EOL;
+echo $CourseManager->courseWithStudentDebts() . PHP_EOL;
 echo "Название курсов, где нет ни одной академической задолженности:".PHP_EOL;
-echo $CourseManager->courseWithoutStudentDebts().PHP_EOL;
+echo $CourseManager->courseWithoutStudentDebts() . PHP_EOL;
 // ваш код
