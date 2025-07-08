@@ -1,0 +1,3 @@
+log1line
+log2line
+log3line
