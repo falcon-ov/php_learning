@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $email = $_POST['email'] ?? '';
     $error = [];
     $data = [];
-    if(!filter_var($email,FILTER_VALIDATE_EMAIL) && $email !== ''){
+    if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
         $error[] = 'Email некорректен';
     }
     if($username == '' || $email == ''){
