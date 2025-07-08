@@ -23,3 +23,6 @@ if($method == "POST"){
     http_response_code(405);
     echo "Только POST-запросы разрешены".PHP_EOL;
 }
+
+
+//curl -X POST -d "username=Daniil" http://localhost:8000/http_methods_2.php

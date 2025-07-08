@@ -14,3 +14,4 @@ if($method == 'DELETE'){
     http_response_code(405);
     echo "Метод \"$method\" не разрешен".PHP_EOL;
 }
+//curl -X DELETE -d "" http://localhost:8000/http_methods_1.php
